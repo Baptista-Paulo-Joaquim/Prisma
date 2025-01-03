@@ -1,4 +1,5 @@
-import ECommerce from "@/components/Dashboard/E-commerce";
+//import ECommerce from "@/components/Dashboard/E-commerce";
+import TableThree from "@/components/Tables/TableThree";
 import { Metadata } from "next";
 import DefaultLayout from "@/components/Layouts/DefaultLayout";
 
@@ -12,7 +13,7 @@ export default function Home() {
   return (
     <>
       <DefaultLayout>
-        <ECommerce />
+        <TableThree />
       </DefaultLayout>
     </>
   );

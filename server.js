@@ -8,6 +8,17 @@ const PORT = 5000;
 
 app.use(cors());
 
+//Fetches users
+app.get("/read_users", async (req, res) => {
+    try {
+        const allUsers = await prisma.user.findMany();
+        res.status(200).json({ message: "Users retrieved successfully", users: allUsers });
+    } catch (error) {
+        console.error("Error retrieving users:", error);
+        res.status(500).json({ error: "Failed to retrieve users." });
+    }
+});
+
 //Create user
 app.post("/create_user", async (req, res) => {
     try {
@@ -24,19 +35,6 @@ app.post("/create_user", async (req, res) => {
         res.status(500).json({ error: "Failed to create user." });
     }
 });
-
-
-//Fetches users
-app.get("/read_users", async (req, res) => {
-    try {
-        const allUsers = await prisma.user.findMany();
-        res.status(200).json({ message: "Users retrieved successfully", users: allUsers });
-    } catch (error) {
-        console.error("Error retrieving users:", error);
-        res.status(500).json({ error: "Failed to retrieve users." });
-    }
-});
-
 
 //DELETES A USER
 app.delete("/delete_user/:id", async (req, res) => {
