@@ -4,10 +4,10 @@ const prisma = new PrismaClient();
 async function main() {
   await prisma.user.createMany({
     data: [
-      { name: 'Rose', email: 'rose@gmail.com' },
-      { name: 'Ana', email: 'ana@gmail.com' },
-      { name: 'Paul', email: 'paul@gmail.com' },
-      { name: 'William', email: 'william@gmail.com' },
+      { name: 'Lia', email: 'lia@gmail.com' },
+      { name: 'Baptista', email: 'baptista@gmail.com' },
+      { name: 'Gerson', email: 'gerson@gmail.com' },
+      { name: 'Ludymila', email: 'mila@gmail.com' },
     ],
   });
 }
