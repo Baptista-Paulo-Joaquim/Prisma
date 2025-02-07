@@ -12,9 +12,7 @@ app.use(express.json())
 //Fetches users
 app.get("/read", async (req, res) => {
     try {
-
         let users = await prisma.user.findMany();
-        console.log(users)
         return res.json(users);
 
     } catch (error) {
@@ -27,9 +25,7 @@ app.get("/read", async (req, res) => {
 app.get("/user/:id", async (req, res) => {
     let id = Number(req.params.id);
     try {
-        let user = await prisma.user.findUnique({
-            where : { id } 
-        })
+        let user = await prisma.user.findUnique({ where : { id }  })
         res.json(user);
     } catch (error) {
         res.status(500).json({ error: "Failed to find a user." });
@@ -42,7 +38,7 @@ app.post("/create/user", async (req, res) => {
     try {
         let { name, email } = req.body;
 
-        await prisma.user.create({ data: { name: name, email: email } })
+        await prisma.user.create({ data: { name, email } })
         .then((res) => {
             res.json(user);
         }).catch((error) => {
